@@ -230,4 +230,4 @@ This project is licensed under the MIT License.
 
 ## Support
 
-If you need any assistance or have questions, join my telegram channel [@applejuicek](https://t.me/applejuicek).
+If you need any assistance or have questions, join our telegram channel [@applejuicek](https://t.me/applejuicek), and btw also don't forget to star ⭐ the repo ;).
