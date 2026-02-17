@@ -88,10 +88,71 @@ def check_for_file():
 
 # Function to perform the login process
 
-
 def loginFuntion():
     print(
-        f"{Fore.YELLOW}{Style.BRIGHT}Login\n\n Enter mobile number in International Format\n Example : {Fore.MAGENTA}+919912345678{Fore.YELLOW}.\n"
+        f"{Fore.YELLOW}{Style.BRIGHT}Login\n\n Choose a login method:\n 1) Login via OTP\n 2) Login via Installation ID\n"
+    )
+
+    # Input-based selection
+    while True:
+        method_choice = input("Type 1 for OTP or 2 for Installation ID: ").strip().lower()
+        if method_choice in ("1", "otp", "o"):
+            method = "otp"
+            break
+        if method_choice in ("2", "installation", "inst", "i"):
+            method = "installation"
+            break
+        print(f"{Fore.RED}Invalid choice. Please type 1 or 2.")
+
+    if method == "installation":
+        # Installation ID proccessing
+        try:
+            installation_id = questionary.text(
+                "Enter your Truecaller Installation ID:"
+            ).ask()
+        except Exception:
+            installation_id = input("Enter your Truecaller Installation ID: ").strip()
+
+        if not installation_id or not isinstance(installation_id, str):
+            print(f"{Fore.RED}Invalid installation ID.")
+            return
+
+        try:
+            country_code = questionary.text(
+                "Enter your phone number's 2-letter ISO country code (e.g. IN, US):"
+            ).ask()
+        except Exception:
+            country_code = input("Enter your phone number's 2-letter ISO country code (e.g. IN, US): ").strip()
+
+        if not country_code or len(country_code.strip()) != 2:
+            print(f"{Fore.RED}Invalid country code. Must be 2 letters like 'IN' or 'US'.")
+            return
+
+        # sanitize installation id
+        installation_id_clean = ''.join(ch for ch in installation_id if ch >= ' ' and ch != '\x7f').strip()
+
+        # Build minimal auth payload expected by the rest of the tool
+        auth_payload = {
+            "installationId": installation_id_clean,
+            "phones": [{"countryCode": country_code.strip().upper()}],
+        }
+
+        try:
+            # Ensure config dir exists
+            if not os.path.exists(truecallerpyAuthDirPath):
+                os.makedirs(truecallerpyAuthDirPath, exist_ok=True)
+
+            with open(authKeyFilePath, "w") as f:
+                json.dump(auth_payload, f, indent=3)
+
+            print(f"{Fore.GREEN}Logged in using Installation ID. Installation ID saved to {authKeyFilePath}")
+        except Exception as e:
+            print(f"{Fore.RED}Failed to save installation ID: {e}")
+        return
+
+    # If user chose OTP, continue with the OTP flow
+    print(
+        f"{Fore.YELLOW}{Style.BRIGHT}\nLogin via OTP\n\n Enter mobile number in International Format\n Example : {Fore.MAGENTA}+919912345678{Fore.YELLOW}.\n"
     )
 
     questions = [
