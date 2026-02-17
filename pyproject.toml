@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "truecallerpy"
-version = "1.0.3"
-description = "TruecallerPy is a Python package that provides functionalities to interact with the Truecaller API. It allows you to perform login, OTP verification, and phone number search using Truecaller."
+version = "1.0"
+description = "TruecallerPy is a Python package that provides functionalities to interact with the Truecaller API."
 readme = "README.md"
 license = { file = "LICENSE" }
 keywords = [
@@ -18,8 +18,8 @@ keywords = [
     "information",
     "mobile",
 ]
-authors = [{ name = "Sumith Emmadi", email = "sumithemmadi244@gmail.com" }]
-maintainers = [{ name = "Sumith Emmadi", email = "sumithemmadi244@gmail.com" }]
+authors = [{ name = "Aryan", email = "208702813+aryanski@users.noreply.github.com"}]
+maintainers = [{ name = "Aryan", email = "208702813+aryanski@users.noreply.github.com" }]
 
 classifiers = [
     "Topic :: Utilities",
@@ -32,11 +32,11 @@ classifiers = [
 dependencies = ["httpx", "phonenumbers", "questionary", "colorama"]
 
 [project.urls]
-Homepage = "https://github.com/sumithemmadi/truecallerpy"
-Documentation = "https://github.com/sumithemmadi/truecallerpy"
-Repository = "https://github.com/sumithemmadi/truecallerpy"
-Changelog = "https://github.com/sumithemmadi/truecallerpy"
-"Bug Tracker" = "https://github.com/sumithemmadi/truecallerpy/issues"
+Homepage = "https://github.com/aryanski/truecallerpy"
+Documentation = "https://github.com/aryanski/truecallerpy"
+Repository = "https://github.com/aryanski/truecallerpy"
+Changelog = "https://github.com/aryanski/truecallerpy"
+"Bug Tracker" = "https://github.com/aryanski/truecallerpy/issues"
 
 [project.scripts]
 truecallerpy = "truecallerpy.cli:main"
