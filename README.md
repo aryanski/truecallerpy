@@ -7,6 +7,10 @@
 
 TruecallerPy is a Python package that provides functionalities to interact with the Truecaller API. It allows you to perform login, OTP verification, and phone number search using Truecaller.
 
+## What's New in This Fork
+
+- Ability to log in with InstallationID
+
 **Table of Contents:**
 
 - [Truecallerpy](#truecallerpy)
@@ -37,10 +41,18 @@ To use the TruecallerPy package, you need to meet the following requirements:
 
 ### Installation
 
-You can install the TruecallerPy package using pip:
+```bash
+git clone https://github.com/aryanski/truecallerpy
+```
 
 ```bash
-pip install truecallerpy
+cd truecallerpy
+```
+
+Install the TruecallerPy package using pip:
+
+```bash
+pip install .
 ```
 
 ### Login
@@ -49,6 +61,15 @@ To log in to your Truecaller account, use the following command:
 
 ```bash
 truecallerpy login
+```
+
+Or if you want to login with your installationid, retrieve it from Truecaller app by running following command in your android
+```bash
+sudo cp /data/data/com.truecaller/shared_prefs/account.xml /sdcard
+```
+And then
+```bash
+grep -oP '(?<=<string name="installationId">).*?(?=</string>)' /sdcard/account.xml
 ```
 
 If you encounter any errors, try running the command with administrative privilege (e.g., `sudo truecallerpy login` on Linux or running the command prompt as administrator on Windows).
@@ -206,24 +227,7 @@ Contributions to the TruecallerPy package are welcome! If you encounter any issu
 ## License
 
 This project is licensed under the MIT License.
-## 💝 Sponsor and support me
-
-If you find my projects helpful or inspiring, consider supporting me through GitHub Sponsors. Your sponsorship helps me dedicate more time and effort to open source development and creating impactful projects.
-
-[:heart: Sponsor me on github](https://github.com/sponsors/sumithemmadi?o=sd&sc=t)
-
-<a href='https://ko-fi.com/W7W4OZNLF' target='_blank'><img height='40' style='border:0px;height:40px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-
-<a href="https://www.buymeacoffee.com/sumithemmadi"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="40" width="180" alt="sumithemmadi" /></a><br><br>
-
-### 💖 Sponsors
-
-[![Sponsors](https://sumithemmadi.github.io/sponsors.svg)](https://github.com/sponsors/sumithemmadi/)
-
-- I want to extend my sincere gratitude to all my sponsors for their generous support.
 
 ## Support
 
-If you need any assistance or have questions, please contact [sumithemmadi244@gmail.com](mailto:sumithemmadi244@gmail.com).
-
-Feel free to customize the documentation template according to your package's features and requirements. Provide detailed explanations and examples for each function, along with the necessary parameters and return types.
+If you need any assistance or have questions, join my telegram channel [@applejuicek](https://t.me/applejuicek).
